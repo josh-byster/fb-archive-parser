@@ -5,8 +5,7 @@ Created on Fri Oct  6 17:22:44 2017
 
 @author: joshbyster
 """
-from load import split_individual
-from parser import load_messages_from_file
+from parser import load_messages_from_file,split_individual
 from wcloud import make_cloud
 import matplotlib.pyplot as plt
 from collections import Counter

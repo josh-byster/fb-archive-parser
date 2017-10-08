@@ -1,7 +1,7 @@
 import pickle
 from collections import Counter
 from wordcloud.wordcloud import WordCloud
-from load import split_individual
+from parser import split_individual
 
 def make_cloud():
     print("Generating word cloud...")
