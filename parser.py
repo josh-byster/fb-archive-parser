@@ -7,6 +7,7 @@ Created on Mon Oct  2 02:13:32 2017
 """
 from dateutil.parser import parse
 from bs4 import BeautifulSoup
+from operator import attrgetter
 import pickle
 from datetime import datetime
 from message import Message
@@ -42,7 +43,7 @@ def load_messages_from_file():
                         print("Parsed:",elements_parsed)
         with open('archive.pkl', 'wb') as f:
              pickle.dump(msgarray, f)
-             
+        
     print("Messages parsed: ", elements_parsed)
 
 
@@ -51,15 +52,17 @@ def split_individual(archive_name):
     authors=[]
     dates=[]
     contents=[]
+    msglist=[]
     for thread in msg:
         for message in thread:
             if(isinstance(message,str)==False):
                authors.append(message.name)
                dates.append(message.date)
                contents.append(message.contents)
+               msglist.append(message)
     bigstring=""
     for k in contents:
         bigstring+=k+" "
     
-    return authors,dates,contents,bigstring
+    return authors,dates,contents,msg,msglist,bigstring
     
